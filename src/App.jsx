@@ -15,6 +15,10 @@ function App() {
     return saved ? JSON.parse(saved) : initialData
   })
   const [showForm, setShowForm] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
+  useEffect(() => {
+  document.body.style.backgroundColor = darkMode ? '#1a1a2e' : '#f0f2f5'
+}, [darkMode])
   const [newTitle, setNewTitle] = useState('')
   const [newDesc, setNewDesc] = useState('')
 
@@ -24,7 +28,7 @@ function App() {
 
   const addTask = () => {
     if (!newTitle.trim()) return
-    const task = { id: Date.now().toString(), title: newTitle, description: newDesc }
+    const task = { id: Date.now().toString(), title: newTitle, description: newDesc, priority: 'Low' }
     setColumns(prev => ({
       ...prev,
       todo: { ...prev.todo, tasks: [...prev.todo.tasks, task] }
@@ -44,13 +48,13 @@ function App() {
     }))
   }
 
-  const editTask = (columnId, taskId, newTitle, newDesc) => {
+  const editTask = (columnId, taskId, newTitle, newDesc, newPriority) => {
     setColumns(prev => ({
       ...prev,
       [columnId]: {
         ...prev[columnId],
         tasks: prev[columnId].tasks.map(t =>
-          t.id === taskId ? { ...t, title: newTitle, description: newDesc } : t
+          t.id === taskId ? { ...t, title: newTitle, description: newDesc, priority: newPriority } : t
         )
       }
     }))
@@ -83,11 +87,16 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app ${darkMode ? 'dark' : ''}`}>
       <div className="header">
-        <h1>Kanban Board</h1>
-        <button className="add-btn" onClick={() => setShowForm(true)}>+ Add Task</button>
-      </div>
+  <h1>Kanban Board</h1>
+  <div className="header-buttons">
+    <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>
+      {darkMode ? '☀️ Light' : '🌙 Dark'}
+    </button>
+    <button className="add-btn" onClick={() => setShowForm(true)}>+ Add Task</button>
+  </div>
+</div>
 
       {showForm && (
         <div className="modal-overlay">

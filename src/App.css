@@ -198,3 +198,96 @@
     flex-direction: column;
   }
 }
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.priority-badge {
+  font-size: 11px;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.edit-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.theme-btn {
+  background-color: #1a1a2e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.dark {
+  background-color: #1a1a2e;
+  min-height: 100vh;
+}
+
+.dark .header h1 {
+  color: white;
+}
+
+.dark .column {
+  background-color: #16213e;
+}
+
+.dark .column-header h2 {
+  color: white;
+}
+
+.dark .task-card {
+  background-color: #0f3460;
+  color: white;
+}
+
+.dark .task-title {
+  color: white;
+}
+
+.dark .task-desc {
+  color: #aaa;
+}
+
+.dark .modal {
+  background-color: #16213e;
+  color: white;
+}
+
+.dark .modal h2 {
+  color: white;
+}
+
+.dark .modal input,
+.dark .modal textarea,
+.dark .edit-form input,
+.dark .edit-form textarea,
+.dark .edit-form select {
+  background-color: #0f3460;
+  color: white;
+  border-color: #444;
+}
+
+.dark .theme-btn {
+  background-color: #f0f2f5;
+  color: #1a1a2e;
+}
